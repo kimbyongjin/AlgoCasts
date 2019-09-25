@@ -7,21 +7,28 @@
 //   reverse('Greetings!') === '!sgniteerG'
 
 // Brute force solution
+// function reverse(str) {
+//   let acc = '';
+//   for (let i = str.length - 1; i >= 0; i--) {
+//     let char = str[i];
+//     acc += char;
+//   }
+//   return acc;
+// };
 
-/*
-function reverse(str) {
-  let acc = '';
-  for (let i = str.length - 1; i >= 0; i--) {
-    let char = str[i];
-    acc += char;
-  }
-  return acc;
-};
-*/
 
 // Elegant solution with native methods
+// function reverse(str) {
+//   return str.split('').reverse().join('');
+// };
+
+
+// Another solution using the array.reduce() native method.
+// This solution is probably the most interesting and inteligent-looking
 function reverse(str) {
-  return str.split('').reverse().join('');
+  return str.split('').reduce((reversed, char) => {
+    return char + reversed
+  }, '');
 };
 
 module.exports = reverse;
