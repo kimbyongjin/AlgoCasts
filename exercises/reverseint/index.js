@@ -8,7 +8,10 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
-function reverseInt(n) {}
+function reverseInt(n) {
+  const sign = Math.sign(n);
+  return parseInt(0 + (n * sign).toString().split('').reverse().join('')) * sign;
+};
 
 module.exports = reverseInt;
 
@@ -33,4 +36,14 @@ Consider using the toString() method of converting the number to a string,
   handle negative input that must now also be negative output
   return reversed number
 
+considerations:
+using Math.sign() will help me determine whether the input number is positive or negative
+
+I can multiply the number by the result of Math.sign() both before and after and reversal operation,
+  that way I will preserve the sign, and can disregard it during reversal operations
+
+To handle leading spaces, I can make my final number = 0 + reversed number. That way I will always eleminate
+  leading zeroes.
+
+Make sure to return the number at the end.
 */
