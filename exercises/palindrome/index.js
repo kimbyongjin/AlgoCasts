@@ -7,17 +7,35 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
+// solution using the array.every() method
+// This solution is not ideal because it forces us to make a comparison check on every pair
+  // of elements in the array. However, we only need to check half of the pairs. Once we get to the middle,
+  // it becomes redundant to check additional pairs.
+
 function palindrome(str) {
-  const reversed = str.split('').reduce((rev, char) =>  {
-    return char + rev;
-  }, '');
-  if (reversed === str) {
-    return true;
-  }
-  return false;
+  return str.split('').every((char, i) => {
+    return char === str[str.length - 1 - i];
+  });
 };
 
+// reverse string and reduce solution:
+// function palindrome(str) {
+//   const reversed = str.split('').reduce((rev, char) =>  {
+//     return char + rev;
+//   }, '');
+
+//   // if (reversed === str) {
+//   //   return true;
+//   // }
+//   // return false;
+
+//   // Or:
+//   return reversed === str;
+// };
+
 module.exports = palindrome;
+
+
 
 /*
 Take a string and determing if is a palindrome.
