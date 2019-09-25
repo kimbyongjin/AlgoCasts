@@ -8,24 +8,44 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
+
+// aditional, slightly more simple implementation of arrayChunked
 function chunk(array, size) {
   let acc = [];
 
-  // outer loop will setup chunk creation
-  for (let i = 0; i < array.length; i += size) {
-    let chunk = [];
+  for (let element of array) {
+    let last = acc[acc.length - 1]
 
-    // inner loop will populate the chunk and push it into the acc array
-    for (let j = i; j < i + size; j++) {
-      if (j < array.length) {
-        chunk.push(array[j]);
-      }
+    if (!last || last.length === size) {
+      acc.push([element]);
+    } else {
+      last.push(element);
     }
-    acc.push(chunk);
   }
 
   return acc;
 };
+
+// Below is my initial solution for the problem.
+
+// function chunk(array, size) {
+//   let acc = [];
+
+//   // outer loop will setup chunk creation
+//   for (let i = 0; i < array.length; i += size) {
+//     let chunk = [];
+
+//     // inner loop will populate the chunk and push it into the acc array
+//     for (let j = i; j < i + size; j++) {
+//       if (j < array.length) {
+//         chunk.push(array[j]);
+//       }
+//     }
+//     acc.push(chunk);
+//   }
+
+//   return acc;
+// };
 
 module.exports = chunk;
 
