@@ -8,23 +8,34 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-
-// aditional, slightly more simple implementation of arrayChunked
+// One more implementation of arrayChunk using the array.slice() native method
 function chunk(array, size) {
   let acc = [];
-
-  for (let element of array) {
-    let last = acc[acc.length - 1]
-
-    if (!last || last.length === size) {
-      acc.push([element]);
-    } else {
-      last.push(element);
-    }
+  let i = 0;
+  while (i < array.length) {
+    let j = i + size < array.length ? i + size : array.length;
+    acc.push(array.slice(i, j));
+    i += size;
   }
-
   return acc;
 };
+
+// aditional, slightly more simple implementation of arrayChunked
+// function chunk(array, size) {
+//   let acc = [];
+
+//   for (let element of array) {
+//     let last = acc[acc.length - 1]
+
+//     if (!last || last.length === size) {
+//       acc.push([element]);
+//     } else {
+//       last.push(element);
+//     }
+//   }
+
+//   return acc;
+// };
 
 // Below is my initial solution for the problem.
 
