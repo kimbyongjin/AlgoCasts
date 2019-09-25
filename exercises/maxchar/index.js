@@ -6,15 +6,19 @@
 // maxChar("apple 1231111") === "1"
 
 function maxChar(str) {
-  let hash = {};
+  let hash = {}; // empty character map
 
-  for (let char of str) {
+  for (let char of str) { // building this is also called building a character map
     if (!hash[char]) {
       hash[char] = 1;
     } else {
       hash[char]++;
     }
+    // instead of using an if statement, I can also us boolean logic such as the following:
+    // hash[char] = hash[char] + 1 || 1;
   }
+
+
 
   let topChar = '';
   let maxCount = 0;
