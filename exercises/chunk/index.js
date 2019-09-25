@@ -10,11 +10,16 @@
 
 // One more implementation of arrayChunk using the array.slice() native method
 function chunk(array, size) {
-  let acc = [];
+  const acc = [];
   let i = 0;
+
   while (i < array.length) {
-    let j = i + size < array.length ? i + size : array.length;
-    acc.push(array.slice(i, j));
+    // slice extracts through the end of an array if end parameter exceeds length of sequence
+      // so, ternary operator is not needed
+    // let j = i + size < array.length ? i + size : array.length;
+    // acc.push(array.slice(i, j));
+
+    acc.push(array.slice(i, i + size));
     i += size;
   }
   return acc;
