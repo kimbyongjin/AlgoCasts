@@ -10,16 +10,40 @@
 
 function anagrams(stringA, stringB) {
   // convert both stringA and stringB to a regexp that will satisfy the anagram constraints
+  const expA = stringA.replace(/[^\w]/g, '').toLowerCase();
+  const expB = stringB.replace(/[^\w]/g, '').toLowerCase();
 
   // check and compare the lengths of both strings, if unequal, return false, else do nothing
-
+  if (expA.length !== expB.length) {
+    return false;
+  }
   // declare a new object character map for each string
-  // iterate through both strings and build a character map for each.
 
+  let mapA = {};
+  let mapB = {};
+  // iterate through both strings and build a character map for each.
+  for (let i = 0; i < expA.length; i++) {
+    let charA = expA[i];
+    let charB = expB[i];
+    if (!mapA[charA]) {
+      mapA[charA] = 1;
+    } else {
+      mapA[charA]++;
+    }
+
+    if (!mapB[charB]) {
+      mapB[charB] = 1;
+    } else {
+      mapB[charB]++;
+    }
+  }
   // iterate through one character map,
-    // compare every key's value to the corresponding key's value in the second map
-    // if there is ever innequality, exit and return false
-    // else, do nothing and allow iteration to finish
+  for (let char in mapA) {
+    if (mapA[char] !== mapB[char]) { // compare every key's value to the corresponding key's value in the second map
+      return false; // if there is ever innequality, exit and return false
+    }
+  }
+  // else, do nothing and allow iteration to finish
 
   return true; // If at no point the function can regect for innequality, return false at the very end
 };
