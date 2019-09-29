@@ -9,7 +9,17 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
+  // convert both stringA and stringB to a regexp that will satisfy the anagram constraints
 
+  // check and compare the lengths of both strings, if unequal, return false, else do nothing
+
+  // declare a new object character map for each string
+  // iterate through both strings and build a character map for each.
+
+  // iterate through one character map,
+    // compare every key's value to the corresponding key's value in the second map
+    // if there is ever innequality, exit and return false
+    // else, do nothing and allow iteration to finish
 
   return true; // If at no point the function can regect for innequality, return false at the very end
 };
