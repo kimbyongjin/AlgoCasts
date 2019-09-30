@@ -17,6 +17,38 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+
+};
 
 module.exports = steps;
+
+/*
+write a function that uses the # character to print out steps following a pattern
+  related to the input positive integer N. From 1 to N, print out an n-length string with progressivel
+  increasinig # characters and decreasing spaces.
+
+i - positive integer N
+o - series of console.log prints of an n-length string consisting of space and hash signs.
+c - The console statement sould always be of n-length.
+e - input of 0, maximum safe N size, extreme time complexity.
+
+To keepin mind, the number N that is input to the function is both the char length of
+  every string consle statement. AND, it is also the number of total lines that are prined out
+  to the console.
+
+  Considerations:
+  I could first create a generic string that will represent the first step. Then kick off
+    a loop n-number of times that will modify the string and console each time.
+  One trick will be to ensure that I console the first step and the last step.
+  If I decide to console before modification, I will start with a single pound step.
+  However, if I decide to console after modification, I must start with a string that consists of only spaces.
+
+  Declare a string that I will be  consoling, let's call it step.
+
+  bind an counter variable to 0
+  run a while loop that increments the counter until it reaches N.
+  modify and console the string for each loop
+
+  return nothing at the end.
+*/
