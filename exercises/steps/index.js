@@ -18,7 +18,24 @@
 //       '####'
 
 function steps(n) {
+  // build a string that of length n of all spaces
+  // this builds a string of all space characters the correct length of n
+  // baseline:
+  let step = '';
+  for (let i = 0; i < n; i++) {
+    step += ' ';
+  }
 
+  // bind a counter to 0
+  let counter = 0;
+
+  while (counter < n) { // run loop while counter < n
+    step = step.slice(0, counter) + '#' + step.slice(counter + 1);
+    console.log(step);
+    // inside the loop, modify the step string at inidex[count]
+    // console.log the string
+    counter++;
+  }
 };
 
 module.exports = steps;
