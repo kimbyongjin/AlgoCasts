@@ -28,24 +28,37 @@
 //   return copy;
 // };
 
-function capitalize(str) {
-  // split string expression into an  array of words.
-  let words = str.split(' '); // this gives array of words
-  let capWords = [];
-  // I can split the expression on the space character to have a resulting array of words that all need a capital first character
-  for (let word of words) {
-    capWords.push(capWord(word));
-  }
-  return capWords.join(' ');
-  // write a helper function that will take a word and capitalize the first letter of that string and return it as a new word
-  // after modifying all the  words, rejoin the array into a  string  expresson and return  the expression
-};
+// my initial split solution, a little messy
+// function capitalize(str) {
+//   // split string expression into an  array of words.
+//   let words = str.split(' '); // this gives array of words
+//   let capWords = [];
+//   // I can split the expression on the space character to have a resulting array of words that all need a capital first character
+//   for (let word of words) {
+//     capWords.push(capWord(word));
+//   }
+//   return capWords.join(' ');
+//   // write a helper function that will take a word and capitalize the first letter of that string and return it as a new word
+//   // after modifying all the  words, rejoin the array into a  string  expresson and return  the expression
+// };
 
-function capWord(word) {
-  // take in a string word
-  // capitalize the first character of that word,
-  // return the word
-  return word.slice(0, 1).toUpperCase() + word.slice(1);
+// function capWord(word) {
+//   // take in a string word
+//   // capitalize the first character of that word,
+//   // return the word
+//   return word.slice(0, 1).toUpperCase() + word.slice(1);
+// };
+
+// now to siimplify the code:
+// Super concise, readable and clean
+function capitalize(str) {
+  let words = [];
+
+  for (let word of str.split(' ')) {
+    words.push(word[0].toUpperCase() + word.slice(1));
+  }
+
+  return words.join(' ');
 };
 
 module.exports = capitalize;
