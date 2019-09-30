@@ -7,12 +7,45 @@
 //   capitalize('a lazy fox') --> 'A Lazy Fox'
 //   capitalize('look, it is working!') --> 'Look, It Is Working!'
 
+// not working solution with for loop
+// TODO: Complete this solution
+
+// function capitalize(str) {
+//   // make a copy of the string so as not to mutilate the input
+//   let copy = str.slice();
+//   // iterate through the string copy
+//   for (let i = 0; i < copy.length; i++) {
+//     let char = copy[i];
+//     let nextChar = copy[i + 1];
+//     if (i === 0) {
+//       copy[i] = char.toUpperCase();
+//     }
+//     if (char === ' ') { // if a character === '  '
+//       copy[i + 1] = nextChar.toUpperCase(); // call .toUpperCase() on the character at the index just after the current, space character
+//     }
+//   }
+//   // after iteration is complete, return the string
+//   return copy;
+// };
+
 function capitalize(str) {
-  // make a copy of the string so as not to mutilate the input
-  // iterate through the string copy
-    // if a character === '  '
-      // call .toUpperCase() on the character at the index just after the current, space character
-  // after iteration is complete, return the string
+  // split string expression into an  array of words.
+  let words = str.split(' '); // this gives array of words
+  let capWords = [];
+  // I can split the expression on the space character to have a resulting array of words that all need a capital first character
+  for (let word of words) {
+    capWords.push(capWord(word));
+  }
+  return capWords.join(' ');
+  // write a helper function that will take a word and capitalize the first letter of that string and return it as a new word
+  // after modifying all the  words, rejoin the array into a  string  expresson and return  the expression
+};
+
+function capWord(word) {
+  // take in a string word
+  // capitalize the first character of that word,
+  // return the word
+  return word.slice(0, 1).toUpperCase() + word.slice(1);
 };
 
 module.exports = capitalize;
@@ -39,4 +72,8 @@ I will write a function that will identify a space character, then call the help
   on the character immediately after the space character.
 
 Although, itmght be just as easy to write it out in a single step.
+
+I am able to identify the correct string character. But, siple reassignment is not  enough to modify
+  the string
+I need to be able to call a replace function to actually modify the string
 */
