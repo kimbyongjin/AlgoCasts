@@ -10,23 +10,21 @@
 // not working solution with for loop
 // TODO: Complete this solution
 
-// function capitalize(str) {
-//   // make a copy of the string so as not to mutilate the input
-//   let copy = str.slice();
-//   // iterate through the string copy
-//   for (let i = 0; i < copy.length; i++) {
-//     let char = copy[i];
-//     let nextChar = copy[i + 1];
-//     if (i === 0) {
-//       copy[i] = char.toUpperCase();
-//     }
-//     if (char === ' ') { // if a character === '  '
-//       copy[i + 1] = nextChar.toUpperCase(); // call .toUpperCase() on the character at the index just after the current, space character
-//     }
-//   }
-//   // after iteration is complete, return the string
-//   return copy;
-// };
+function capitalize(str) {
+  let capString = str[0].toUpperCase();
+
+  for (let i  = 1; i < str.length; i++) {
+    let char = str[i];
+    let previous = str[i - 1];
+    if (previous === ' ') {
+      capString += char.toUpperCase();
+    } else {
+      capString += char;
+    }
+  }
+
+  return capString;
+};
 
 // my initial split solution, a little messy
 // function capitalize(str) {
@@ -51,15 +49,15 @@
 
 // now to siimplify the code:
 // Super concise, readable and clean
-function capitalize(str) {
-  let words = [];
+// function capitalize(str) {
+//   let words = [];
 
-  for (let word of str.split(' ')) {
-    words.push(word[0].toUpperCase() + word.slice(1));
-  }
+//   for (let word of str.split(' ')) {
+//     words.push(word[0].toUpperCase() + word.slice(1));
+//   }
 
-  return words.join(' ');
-};
+//   return words.join(' ');
+// };
 
 module.exports = capitalize;
 
