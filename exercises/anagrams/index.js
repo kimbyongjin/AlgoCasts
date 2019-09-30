@@ -8,47 +8,59 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
+// alternative solution
 function anagrams(stringA, stringB) {
-  // convert both stringA and stringB to a regexp that will satisfy the anagram constraints
-  const expA = stringA.replace(/[^\w]/g, '').toLowerCase();
-  const expB = stringB.replace(/[^\w]/g, '').toLowerCase();
+  return cleanString(stringA) === cleanString(stringB);
+};
 
-  // check and compare the lengths of both strings, if unequal, return false, else do nothing
-  if (expA.length !== expB.length) {
-    return false;
-  }
-  // declare a new object character map for each string
-
-  let mapA = {};
-  let mapB = {};
-  // iterate through both strings and build a character map for each.
-  for (let i = 0; i < expA.length; i++) {
-    let charA = expA[i];
-    let charB = expB[i];
-    if (!mapA[charA]) {
-      mapA[charA] = 1;
-    } else {
-      mapA[charA]++;
-    }
-
-    if (!mapB[charB]) {
-      mapB[charB] = 1;
-    } else {
-      mapB[charB]++;
-    }
-  }
-  // iterate through one character map,
-  for (let char in mapA) {
-    if (mapA[char] !== mapB[char]) { // compare every key's value to the corresponding key's value in the second map
-      return false; // if there is ever innequality, exit and return false
-    }
-  }
-  // else, do nothing and allow iteration to finish
-
-  return true; // If at no point the function can regect for innequality, return false at the very end
+// brush up on regexp syntax. Every piece is super important. Do not miss a character or symbol. Be careful with flags
+function cleanString(str) {
+  return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
 };
 
 module.exports = anagrams;
+
+// initial solution - should have used a helper function
+
+// function anagrams(stringA, stringB) {
+//   // convert both stringA and stringB to a regexp that will satisfy the anagram constraints
+//   const expA = stringA.replace(/[^\w]/g, '').toLowerCase();
+//   const expB = stringB.replace(/[^\w]/g, '').toLowerCase();
+
+//   // check and compare the lengths of both strings, if unequal, return false, else do nothing
+//   if (expA.length !== expB.length) {
+//     return false;
+//   }
+//   // declare a new object character map for each string
+
+//   let mapA = {};
+//   let mapB = {};
+//   // iterate through both strings and build a character map for each.
+//   for (let i = 0; i < expA.length; i++) {
+//     let charA = expA[i];
+//     let charB = expB[i];
+//     if (!mapA[charA]) {
+//       mapA[charA] = 1;
+//     } else {
+//       mapA[charA]++;
+//     }
+
+//     if (!mapB[charB]) {
+//       mapB[charB] = 1;
+//     } else {
+//       mapB[charB]++;
+//     }
+//   }
+//   // iterate through one character map,
+//   for (let char in mapA) {
+//     if (mapA[char] !== mapB[char]) { // compare every key's value to the corresponding key's value in the second map
+//       return false; // if there is ever innequality, exit and return false
+//     }
+//   }
+//   // else, do nothing and allow iteration to finish
+
+//   return true; // If at no point the function can regect for innequality, return false at the very end
+// };
 
 /*
 Write a function that compares two input string and returns whether they are anagrams of each other
