@@ -17,19 +17,48 @@
 //       '### '
 //       '####'
 
-// iterative solution for steps
-function steps(n) {
-  for (let row = 0; row < n; row++) {
-    let stair = '';
-    for (let column = 0; column < n; column++) {
-      if (column <= row) {
-        stair += '#';
-      } else {
-        stair += ' ';
-      }
-    }
-    console.log(stair);
+// second iterative solution for steps - will refactor for recursive solution
+// function steps(n) {
+//   for (let row = 0; row < n; row++) {
+//     let stair = '';
+//     for (let column = 0; column < n; column++) {
+//       if (column <= row) {
+//         stair += '#';
+//       } else {
+//         stair += ' ';
+//       }
+//     }
+//     console.log(stair);
+//   }
+// };
+
+function steps(n, row = 0, stair = '') {
+  // declare base case
+  if (n === row) {
+    return;
   }
+
+  // this code block will console log a completed stair and move to the next row
+  // default parameter for stair will begin next recursive call with empty string for stair.
+  if (stair.length === n) {
+    console.log(stair)
+    return steps(n, row + 1)
+  }
+
+  // This code block builds upon the stair until it is the proper length
+  // adds a single '#' for the current row count, and a ' ' for every other character until row.length === n
+  if (stair.length <= row) {
+    stair += '#';
+  } else {
+    stair += ' ';
+  }
+
+  // makes a recursive function call to continue building stair
+  steps(n, row, stair);
+
+  // NOTE: A return statement is not needed here, or before calling steps to continue building the stair.
+  // Because this is the end of the funtion block and no value need be returned, the function just
+  // ends and returns undefined.
 };
 
 
