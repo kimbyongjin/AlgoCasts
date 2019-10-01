@@ -14,7 +14,10 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+  // calculate the number of columns for a given n
+  // set counter to a level
+};
 
 module.exports = pyramid;
 
@@ -52,5 +55,6 @@ Some observations:
   However, leftStair and rightStair will never reset. They will move appropriately when moving on
     to the next level
 
-  When the number of levels, counter, is equal to n, end the function and stop printing
+  When the number of levels, counter, is equal to n, end the function and stop printing.
+
   */
