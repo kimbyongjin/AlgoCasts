@@ -47,20 +47,46 @@
 // };
 
 // clened up iterative solution
-function pyramid(n) {
-  const midpoint = Math.floor((2 * n - 1) / 2);
+// function pyramid(n) {
+//   const midpoint = Math.floor((2 * n - 1) / 2);
 
-  for (let row = 0; row < n; row++) {
-    let level = '';
-    for (let column = 0; column < 2 * n - 1; column++) {
-      if (column >= midpoint - row && column <= midpoint + row) {
-        level += '#';
-      } else {
-        level += ' ';
-      }
-    }
-    console.log(level);
+//   for (let row = 0; row < n; row++) {
+//     let level = '';
+//     for (let column = 0; column < 2 * n - 1; column++) {
+//       if (column >= midpoint - row && column <= midpoint + row) {
+//         level += '#';
+//       } else {
+//         level += ' ';
+//       }
+//     }
+//     console.log(level);
+//   }
+// };
+
+// Recursive solution
+function pyramid(n, row = 0, level = '', column = 0) {
+  const midpoint = Math.floor((2 * n - 1) / 2);
+  const maxLength = 2 * n - 1;
+
+  // establish base case
+  if (row === n) {
+    return;
   }
+
+  // the following statement prints out a level and recurses to build the next level
+  if (level.length === maxLength) {
+    console.log(level);
+    return pyramid(n, row + 1);
+  }
+
+  // the following statement builds a level by checking that the current column is within the range of
+  // appropriate hash symbol pyramid columns for a given row
+  if (column >= midpoint - row && column <= midpoint + row) {
+    level += '#';
+  } else {
+    level += ' ';
+  }
+  pyramid(n, row, level, column + 1);
 };
 
 module.exports = pyramid;
