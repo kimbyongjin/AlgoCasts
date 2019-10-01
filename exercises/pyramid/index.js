@@ -18,17 +18,32 @@
 // first, iterative solution
 function pyramid(n) {
   // calculate the number of columns for a given n
+  const columns = (n * 2) - 1;
+
   // declare a center position and bind leftStep and rightStep to the center index value
+  let leftStep = Math.floor(columns / 2);
+  let rightStep = Math.floor(columns / 2);
+
   // run outer loop until row === n
+  for (let row = 0; row < n; row++) {
     // declare a new level as an empty string
+    let level = '';
     // run inner loop to build a level
-
+    for (let col = 0; col < columns; col++) {
       // if current column index is less than leftStep or greater than rightStep
+      if (col < leftStep || col > rightStep) {
         // add a ' ' (space character) to level
-
+        level += ' ';
+      } else {
         // else, add a '#' symbol to level,
-
+        level += '#';
+      }
+    }
     // console.log()  the current level string, then move on to another level and begin building again.
+    console.log(level);
+    leftStep--;
+    rightStep++;
+  }
 };
 
 module.exports = pyramid;
