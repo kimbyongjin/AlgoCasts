@@ -17,28 +17,46 @@
 //       '### '
 //       '####'
 
+// iterative solution for steps
 function steps(n) {
-  // build a string that of length n of all spaces
-  // this builds a string of all space characters the correct length of n
-  // baseline:
-  let step = '';
-  for (let i = 0; i < n; i++) {
-    step += ' ';
-  }
-
-  // bind a counter to 0
-  let counter = 0;
-
-  while (counter < n) { // run loop while counter < n
-    step = step.slice(0, counter) + '#' + step.slice(counter + 1);
-    console.log(step);
-    // inside the loop, modify the step string at inidex[count]
-    // console.log the string
-    counter++;
+  for (let row = 0; row < n; row++) {
+    let stair = '';
+    for (let column = 0; column < n; column++) {
+      if (column <= row) {
+        stair += '#';
+      } else {
+        stair += ' ';
+      }
+    }
+    console.log(stair);
   }
 };
 
+
 module.exports = steps;
+
+
+// First, iterative solution.
+// function steps(n) {
+//   // build a string that of length n of all spaces
+//   // this builds a string of all space characters the correct length of n
+//   // baseline:
+//   let step = '';
+//   for (let i = 0; i < n; i++) {
+//     step += ' ';
+//   }
+
+//   // bind a counter to 0
+//   let counter = 0;
+
+//   while (counter < n) { // run loop while counter < n
+//     step = step.slice(0, counter) + '#' + step.slice(counter + 1);
+//     console.log(step);
+//     // inside the loop, modify the step string at inidex[count]
+//     // console.log the string
+//     counter++;
+//   }
+// };
 
 /*
 write a function that uses the # character to print out steps following a pattern
@@ -68,4 +86,13 @@ To keepin mind, the number N that is input to the function is both the char leng
   modify and console the string for each loop
 
   return nothing at the end.
+
+Notes on building a recursive solution
+
+Each function call should console the appropriate step.
+This could be done in a way very similar to the while loop.
+A while loop is essentially like a function call that repeats logic and changes a parameter  withinthe loop
+
+I need to pass along a parameter in the recursive solution that sends along the current step, and
+  decrements it appropriately.
 */
