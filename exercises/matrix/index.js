@@ -15,7 +15,49 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
-function matrix(n) {}
+function matrix(n) {
+  // first create an NxN matrix with empty values
+  // use the Array constructor to make an empty array then push into it n-number of n-length
+    // empty arrays into it
+
+  // declare a val that will be the incrementing value that is inserted in the spiral
+  // the function must end when val === n^2
+
+  // set bindings for:
+  // startRow = 0
+  // endRow = n - 1
+  // startCol = 0
+  // and endCol = n - 1
+
+  // FIRST PASS
+  // kick off first pass traversing along start row
+    // access matrix[startRow][startCol] as the first value
+      // insert a value, increment the value
+      // check that value is <= n^2
+        // if yes, continue pass
+        // else, end the function and return matrixSpiral
+
+      // if continuing the pass, insert, increment, and check values accessing next value by incrementing
+        // the value of startCol variable in matrix access.
+        // So, the second value to be inserted would fall at matrix[startRow][startCol + 1]
+          // continue until the second matrix parameter === the value of endCol
+
+          // after reaching endCol, increment the persistent value of startRow *THIS IS VERY IMPORTANT*
+
+  // SECOND PASS
+    // traversal is along endCol
+    // access first value for insertion located at matrix[startRow][endCol]
+      //
+
+
+  // THIRD PASS
+
+
+
+  // FOURTH PASS
+
+
+};
 
 module.exports = matrix;
 
