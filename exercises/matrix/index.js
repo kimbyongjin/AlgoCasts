@@ -15,29 +15,40 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
-function matrix(n) {
+
+
+function matrix(n, val = 0, max = n * n, startRow = 0, endRow = n - 1, startCol = 0, endCol = n - 1) {
   // first create an NxN matrix with empty values
   // use the Array constructor to make an empty array then push into it n-number of n-length
     // empty arrays into it
-  let spiral = Array();
-  for (let i = 0; i < n; i++) {
-    spiral.push(Array(n));
+
+  function buildArray(n) {
+    let arr = Array();
+    for (let i = 0; i < n; i++) {
+      arr.push(Array(n));
+    }
+    return arr;
   }
 
+  let spiral = arguments[7] || buildArray(n);
   // declare a val that will be the incrementing value that is inserted in the spiral
   // the function must end when val === n^2
-  let val = 1;
-  let max = n^2;
+
+  // These given default values in function definition and for recursion
+  // let val = 0;
+  // let max = n * n;
 
   // set bindings for:
   // startRow = 0
   // endRow = n - 1
   // startCol = 0
   // and endCol = n - 1
-  let startRow = 0;
-  let endRow = n - 1;
-  let startCol = 0;
-  let endCol = n - 1;
+
+  // given new default values
+  // let startRow = 0;
+  // let endRow = n - 1;
+  // let startCol = 0;
+  // let endCol = n - 1;
 
 
   // FIRST PASS
@@ -55,8 +66,8 @@ function matrix(n) {
 
           // after reaching endCol, increment the persistent value of startRow *THIS IS VERY IMPORTANT*
   for (let col = startCol; col <= endCol; col++) {
-    spiral[startRow][col] = val;
     val++
+    spiral[startRow][col] = val;
   }
   startRow++
 
@@ -73,8 +84,8 @@ function matrix(n) {
       // once startRow === endRow, end traversal of endCol
         // DECREMENT endCol, and move on to third pass
   for (let row = startRow; row <= endRow; row++) {
-    spiral[row][endCol] = val;
     val++;
+    spiral[row][endCol] = val;
   }
   endCol--;
   if (val === max) {
@@ -90,8 +101,8 @@ function matrix(n) {
       // Continue insertion of values until endCol === startCol
       // after ending pass, decrement endRow and move on to fourth pass
   for (let col = endCol; col >= startCol; col--) {
-    spiral[endRow][col] = val;
     val++
+    spiral[endRow][col] = val;
   }
   endRow--;
   if (val === max) {
@@ -107,16 +118,17 @@ function matrix(n) {
       // once endRow ===  startRow, end traversal/insertion
         // DECREMENT value of endRow and restart back to FIRST PASS iif possible
   for (let row = endRow; row >= startRow; row--) {
-    spiral[row][startCol] = val;
     val++;
+    spiral[row][startCol] = val;
   }
-  endRow--
+  startCol++;
   if (val === max) {
     return spiral;
   }
   // Once val === n^2
     // return matrix
 
+  return matrix(n, val, max, startRow, endRow, startCol, endCol, spiral);
 };
 
 module.exports = matrix;
