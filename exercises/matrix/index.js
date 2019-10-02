@@ -54,14 +54,14 @@ I will consider each stage of insertion as a pass.
   On the first pass, insertion will fill the startRow with values from startCol to endCol
     Then, startRow will be INCREMENTED
 
-  On the second pass, insertio will begin along the startCol from startRow to endRow.
-    Then the startCol will be DECREMENTED.
+  On the second pass, insertion will begin along the endCol from startRow to endRow.
+    Then the endCol will be DECREMENTED.
 
-  On the third pass, insertion will fill the endRow from endCol to  startCol.
-    Then the endRow will be decremented.
+  On the third pass, insertion will fill the endRow from endCol to startCol.
+    Then the endRow will be DECREMENTED.
 
   On the fourth pass, insertion will fill the startCol from endRow to startRow.
-    Then the startCol will be incremented.
+    Then the startCol will be INCREMENTED.
 
 These four passes are the pattern of spiral insertion.
   At the end of every pass, a check should be made to compare the value of val === n^2. Once that happens,
@@ -99,4 +99,13 @@ After third pass
 fourth pass not necessary, val === n^2
   return matrix.
 
+
+Observations:
+  After a pass inserting values into a colum or row that is a start* prefix, that
+    corresponding start* boundary will be incremented
+  And, after a pass that inserts values into a col or row with an end* prefix, the corresponding
+    end* boundary will be decremented.
+
+  This will achieve the desired result that all rows ar moving towards each other,
+    And, all columns are moving towards each other.
 */
