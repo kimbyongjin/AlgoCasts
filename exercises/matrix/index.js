@@ -19,15 +19,26 @@ function matrix(n) {
   // first create an NxN matrix with empty values
   // use the Array constructor to make an empty array then push into it n-number of n-length
     // empty arrays into it
+  let spiral = Array();
+  for (let i = 0; i < n; i++) {
+    spiral.push(Array(n));
+  }
 
   // declare a val that will be the incrementing value that is inserted in the spiral
   // the function must end when val === n^2
+  let val = 1;
+  let max = n^2;
 
   // set bindings for:
   // startRow = 0
   // endRow = n - 1
   // startCol = 0
   // and endCol = n - 1
+  let startRow = 0;
+  let endRow = n - 1;
+  let startCol = 0;
+  let endCol = n - 1;
+
 
   // FIRST PASS
   // kick off first pass traversing along start row
@@ -43,19 +54,68 @@ function matrix(n) {
           // continue until the second matrix parameter === the value of endCol
 
           // after reaching endCol, increment the persistent value of startRow *THIS IS VERY IMPORTANT*
+  for (let col = startCol; col <= endCol; col++) {
+    spiral[startRow][col] = val;
+    val++
+  }
+  startRow++
+
+  if (val === max) {
+    return spiral;
+  }
 
   // SECOND PASS
     // traversal is along endCol
     // access first value for insertion located at matrix[startRow][endCol]
-      //
+      // insert val, increment val, check that val is less than n^2
 
+      // if possible, continue traversing the endCol and access the next value at matrix[startRow + 1][endCol]
+      // once startRow === endRow, end traversal of endCol
+        // DECREMENT endCol, and move on to third pass
+  for (let row = startRow; row <= endRow; row++) {
+    spiral[row][endCol] = val;
+    val++;
+  }
+  endCol--;
+  if (val === max) {
+    return spiral;
+  }
 
   // THIRD PASS
+    // traversal of endRow from endCol to startCol
+    // access first value at matrix[endRow][endCol]
+      // insert val, increment val, check that val is <= n^2
+      // if possible, insert next value at martix[endrow][endCol - 1]
 
-
+      // Continue insertion of values until endCol === startCol
+      // after ending pass, decrement endRow and move on to fourth pass
+  for (let col = endCol; col >= startCol; col--) {
+    spiral[endRow][col] = val;
+    val++
+  }
+  endRow--;
+  if (val === max) {
+    return spiral;
+  }
 
   // FOURTH PASS
+    // traversal of startCol from endRow to startRow
+    // access first value at matrix[endRow][startCol]
+      // insert val, increment val, check that val <= n^2
 
+      // if possible, continue traversal and access next value at matrix[endRow - 1][startCol]
+      // once endRow ===  startRow, end traversal/insertion
+        // DECREMENT value of endRow and restart back to FIRST PASS iif possible
+  for (let row = endRow; row >= startRow; row--) {
+    spiral[row][startCol] = val;
+    val++;
+  }
+  endRow--
+  if (val === max) {
+    return spiral;
+  }
+  // Once val === n^2
+    // return matrix
 
 };
 
