@@ -16,6 +16,13 @@ class Queue {
   remove() {
     return this.data.pop();
   }
+
+  // peek method will check what the next value of the queue that would br removed with the next call of the
+    // remove method. Can be used to ensure that weaving queues will not populate undefined for queues of
+    // differing length.
+  peek() {
+    return this.data[this.data.length - 1];
+  }
 }
 
 module.exports = Queue;
