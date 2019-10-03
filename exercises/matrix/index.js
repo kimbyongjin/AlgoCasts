@@ -15,7 +15,53 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
+function matrix(n) {
+  const spiral = [];
+  for (let i = 0; i < n; i++) {
+    spiral.push([]);
+  }
 
+  let startRow = 0;
+  let endRow = n - 1;
+  let startColumn = 0;
+  let endColumn = n - 1;
+
+  let counter = 1;
+
+  while (startRow <= endRow && startColumn <= endColumn) {
+    for (let column = startColumn; column <= endColumn; column++) {
+      spiral[startRow][column] = counter;
+      counter++;
+    }
+    startRow++;
+
+    for (let row = startRow; row <= endRow; row++) {
+      spiral[row][endColumn] = counter;
+      counter++;
+    }
+    endColumn--;
+
+    for (let column = endColumn; column >= startColumn; column--) {
+      spiral[endRow][column] = counter;
+      counter++;
+    }
+    endRow--;
+
+    for (let row = endRow; row >= startRow; row--) {
+      spiral[row][startColumn] = counter;
+      counter++;
+    }
+    startColumn++;
+  }
+
+  return spiral;
+};
+
+module.exports = matrix;
+
+/*
+// This is my first attempt. I use a recursive call at the end instead of a while loop.
+// We remake and try to clean it up a lot.
 
 function matrix(n, val = 0, max = n * n, startRow = 0, endRow = n - 1, startCol = 0, endCol = n - 1) {
   // first create an NxN matrix with empty values
@@ -131,7 +177,7 @@ function matrix(n, val = 0, max = n * n, startRow = 0, endRow = n - 1, startCol 
   return matrix(n, val, max, startRow, endRow, startCol, endCol, spiral);
 };
 
-module.exports = matrix;
+*/
 
 /*
 Write a function that accepts an integer n and returns a nxn (n by n) spiral matrix
