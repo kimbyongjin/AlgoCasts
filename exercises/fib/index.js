@@ -8,17 +8,29 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {
-  let sequence = [0, 1];
 
-  while (sequence.length <= n) {
-    sequence.push(sequence[sequence.length - 1] + sequence[sequence.length - 2]);
+// Recursive solution for fibonacci
+// *MEMORIZE THIS*
+function fib(n) {
+  if (n < 2) {
+    return n;
   }
 
-  return sequence[n];
+  return fib(n - 1) + fib(n - 2);
 };
 
 module.exports = fib;
+
+// Iterative solution, with linear time complexity
+// function fib(n) {
+//   let sequence = [0, 1];
+
+//   while (sequence.length <= n) {
+//     sequence.push(sequence[sequence.length - 1] + sequence[sequence.length - 2]);
+//   }
+
+//   return sequence[n];
+// };
 
 /*
 Write a fucntion that returns the target element n in the fibonacci series.
